@@ -102,7 +102,7 @@ namespace Lab_8
                     string num = string.Empty;
                     if (IsPrefix(i, input)) num += '-';
 
-                    while (!IsOperation(input[i]) || input[i] == '.')
+                    while (char.IsDigit(input[i]) || input[i] == '.')
                     {
                         num += input[i];
                         i++;
@@ -211,6 +211,7 @@ namespace Lab_8
         }
         private static void GetError(string errorText)
         {
+            Console.Beep(500, 200);
             File.WriteAllText("output.txt", errorText);
             Console.WriteLine(errorText);
             Console.WriteLine("Для продолжения нажмите любую клавишу...");

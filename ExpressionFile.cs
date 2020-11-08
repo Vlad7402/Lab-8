@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace Lab_8
@@ -15,6 +16,7 @@ namespace Lab_8
         }
         private static void GetError(string errorText)
         {
+            Console.Beep(500, 200);
             File.WriteAllText("output.txt", errorText);
             Console.WriteLine(errorText);
             Console.WriteLine("Для продолжения нажмите любую клавишу...");
@@ -85,6 +87,16 @@ namespace Lab_8
             if (("+-/*^".IndexOf(operation) != -1))
                 return true;
             return false;
+        }
+        public static double[] GetArgumentVels(double velStart, double velEnd, double step)
+        {
+            List<double> result = new List<double>();
+            for (double i = velStart; i < velEnd; i++)
+            {
+                result.Add(velStart + step);
+                velStart += step;
+            }
+            return result.ToArray();
         }
     }
 }

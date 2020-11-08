@@ -21,7 +21,7 @@ namespace Lab_8
                 tableStrings.Add(HeadPrint(longestX, "├", "┤") + HeadPrint(longestY, "├", "┤"));
             }
             tableStrings.Add(HeadPrint(longestX, "└", "┘") + HeadPrint(longestY, "└", "┘"));
-            File.WriteAllLines("output", tableStrings);
+            File.WriteAllLines("output.txt", tableStrings);
         }
         private static string HeadPrint(int longestNumLenght, string LineStart, string LineEnd)
         {
@@ -41,9 +41,8 @@ namespace Lab_8
         {
             string result = string.Empty;
             result += "│";
-            result += FillTableEmptyness(longestNumLenght - num.Length / 2);
             result += num;
-            result += FillTableEmptyness(longestNumLenght - (num.Length - num.Length / 2));
+            result += FillTableEmptyness(longestNumLenght - num.Length);
             result += "│";
             return result;
         }
