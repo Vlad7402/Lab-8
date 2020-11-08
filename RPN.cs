@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Lab_8
 {
-    static class RPW
+    static class RPN
     {
         public static string GetExpression(string input)
         {
@@ -90,15 +90,18 @@ namespace Lab_8
             {
                 if (Char.IsWhiteSpace(input[i])) continue;
 
-                if (input[i] == 'x') nums.Push(velOfX);
+                if (input[i] == 'x') 
+                {
+                    if (IsPrefix(i, input)) nums.Push(velOfX * -1);
+                    else nums.Push(velOfX); 
+
+                }
 
                 else if (Char.IsDigit(input[i]))
                 {
                     string num = string.Empty;
-                    if (IsPrefix(i, input))
-                    {
-                        num += '-';
-                    }
+                    if (IsPrefix(i, input)) num += '-';
+
                     while (!IsOperation(input[i]) || input[i] == '.')
                     {
                         num += input[i];
